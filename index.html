@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Calculadora con estética de símbolo del sistema (CMD)">
+  <title>Calculadora · C:\Windows\system32\cmd.exe</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="escenario">
+    <div class="ventana" id="ventana">
+
+      <header class="barra-titulo" id="barraTitulo">
+        <div class="barra-titulo__texto">
+          <span class="barra-titulo__icono" aria-hidden="true">&gt;_</span>
+          <span class="barra-titulo__nombre">C:\Windows\system32\cmd.exe — Calculadora</span>
+        </div>
+        <div class="barra-titulo__controles">
+          <button type="button" class="boton-ventana" id="btnMinimizar" title="Minimizar" aria-label="Minimizar">─</button>
+          <button type="button" class="boton-ventana" id="btnMaximizar" title="Maximizar" aria-label="Maximizar">□</button>
+          <button type="button" class="boton-ventana boton-ventana--cerrar" id="btnCerrar" title="Cerrar" aria-label="Cerrar">✕</button>
+        </div>
+      </header>
+
+      <section class="consola" id="consola">
+        <div class="consola__salida" id="salida" role="log" aria-live="polite" aria-label="Salida de la consola"></div>
+
+        <div class="consola__entrada">
+          <span class="prompt" aria-hidden="true">C:\Calculadora&gt;</span>
+          <span class="campo" id="campo">
+            <span class="campo__texto" id="textoAntes"></span><span class="cursor" aria-hidden="true"></span><span class="campo__texto" id="textoDespues"></span>
+            <input class="campo__input" id="entrada" type="text" autocomplete="off" autocapitalize="off" spellcheck="false"
+                   aria-label="Escribe una operación o un comando">
+          </span>
+        </div>
+      </section>
+
+      <div class="teclado" id="teclado" role="group" aria-label="Teclado de la calculadora">
+        <button type="button" class="tecla tecla--funcion" data-insertar="sqrt(" title="Raíz cuadrada">√</button>
+        <button type="button" class="tecla tecla--funcion" data-insertar="sin(" title="Seno (grados)">sin</button>
+        <button type="button" class="tecla tecla--funcion" data-insertar="cos(" title="Coseno (grados)">cos</button>
+        <button type="button" class="tecla tecla--funcion" data-insertar="tan(" title="Tangente (grados)">tan</button>
+
+        <button type="button" class="tecla tecla--funcion" data-insertar="log(" title="Logaritmo en base 10">log</button>
+        <button type="button" class="tecla tecla--funcion" data-insertar="ln(" title="Logaritmo natural">ln</button>
+        <button type="button" class="tecla tecla--operador" data-insertar="^" title="Potencia">^</button>
+        <button type="button" class="tecla tecla--operador" data-insertar="/" title="Dividir">÷</button>
+
+        <button type="button" class="tecla" data-insertar="7">7</button>
+        <button type="button" class="tecla" data-insertar="8">8</button>
+        <button type="button" class="tecla" data-insertar="9">9</button>
+        <button type="button" class="tecla tecla--operador" data-insertar="*" title="Multiplicar">×</button>
+
+        <button type="button" class="tecla" data-insertar="4">4</button>
+        <button type="button" class="tecla" data-insertar="5">5</button>
+        <button type="button" class="tecla" data-insertar="6">6</button>
+        <button type="button" class="tecla tecla--operador" data-insertar="-" title="Restar">−</button>
+
+        <button type="button" class="tecla" data-insertar="1">1</button>
+        <button type="button" class="tecla" data-insertar="2">2</button>
+        <button type="button" class="tecla" data-insertar="3">3</button>
+        <button type="button" class="tecla tecla--operador" data-insertar="+" title="Sumar">+</button>
+
+        <button type="button" class="tecla" data-insertar="0">0</button>
+        <button type="button" class="tecla" data-insertar="." title="Coma decimal">.</button>
+        <button type="button" class="tecla tecla--operador" data-insertar="(" title="Paréntesis abierto">(</button>
+        <button type="button" class="tecla tecla--operador" data-insertar=")" title="Paréntesis cerrado">)</button>
+
+        <button type="button" class="tecla tecla--accion" data-accion="borrar" title="Borrar un carácter">⌫</button>
+        <button type="button" class="tecla tecla--peligro" data-accion="limpiar" title="Vaciar la línea">C</button>
+        <button type="button" class="tecla tecla--operador" data-insertar="%" title="Módulo (resto)">%</button>
+        <button type="button" class="tecla tecla--igual" data-accion="calcular" title="Calcular">=</button>
+      </div>
+
+      <footer class="pie">
+        <span><kbd>Enter</kbd> ejecutar</span>
+        <span><kbd>↑</kbd><kbd>↓</kbd> historial</span>
+        <span><kbd>Esc</kbd> borrar línea</span>
+        <span class="pie__version">Calculadora CMD v1.0</span>
+      </footer>
+
+      <div class="cierre" id="cierre" hidden>
+        <p class="cierre__mensaje">El proceso <span>cmd.exe</span> ha finalizado.</p>
+        <button type="button" class="cierre__reiniciar" id="btnReiniciar">Reiniciar sesión</button>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

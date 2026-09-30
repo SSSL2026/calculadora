@@ -1,0 +1,15 @@
+# Dependencias
+node_modules/
+
+# Archivos del sistema
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editores e IDEs
+.vscode/
+.idea/
+
+# Entornos locales
+.env
+.env.local
