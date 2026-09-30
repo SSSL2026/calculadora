@@ -1,12 +1,23 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-tema="consola">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="dark">
+  <meta name="color-scheme" content="dark light">
   <meta name="description" content="Calculadora con estética de símbolo del sistema (CMD)">
   <title>Calculadora · C:\Windows\system32\cmd.exe</title>
   <link rel="stylesheet" href="styles.css">
+  <script>
+    /* Aplica el tema guardado antes del primer pintado para evitar parpadeos */
+    (function () {
+      try {
+        var tema = localStorage.getItem('calculadora:tema');
+        if (tema === 'retro' || tema === 'moderno' || tema === 'consola') {
+          document.documentElement.setAttribute('data-tema', tema);
+        }
+      } catch (error) { /* almacenamiento no disponible */ }
+    })();
+  </script>
 </head>
 <body>
   <main class="escenario">
@@ -17,10 +28,18 @@
           <span class="barra-titulo__icono" aria-hidden="true">&gt;_</span>
           <span class="barra-titulo__nombre">C:\Windows\system32\cmd.exe — Calculadora</span>
         </div>
-        <div class="barra-titulo__controles">
-          <button type="button" class="boton-ventana" id="btnMinimizar" title="Minimizar" aria-label="Minimizar">─</button>
-          <button type="button" class="boton-ventana" id="btnMaximizar" title="Maximizar" aria-label="Maximizar">□</button>
-          <button type="button" class="boton-ventana boton-ventana--cerrar" id="btnCerrar" title="Cerrar" aria-label="Cerrar">✕</button>
+        <div class="barra-titulo__acciones">
+          <div class="selector-tema" id="selectorTema" role="group" aria-label="Selector de tema">
+            <button type="button" class="tema-boton" data-tema-boton="retro" aria-pressed="false" title="Tema retro: terminal de fósforo con efecto CRT">Retro</button>
+            <button type="button" class="tema-boton" data-tema-boton="moderno" aria-pressed="false" title="Tema moderno: interfaz clara y minimalista">Moderno</button>
+            <button type="button" class="tema-boton" data-tema-boton="consola" aria-pressed="true" title="Tema consola: estilo símbolo del sistema (CMD)">Consola</button>
+          </div>
+
+          <div class="barra-titulo__controles">
+            <button type="button" class="boton-ventana" id="btnMinimizar" title="Minimizar" aria-label="Minimizar">─</button>
+            <button type="button" class="boton-ventana" id="btnMaximizar" title="Maximizar" aria-label="Maximizar">□</button>
+            <button type="button" class="boton-ventana boton-ventana--cerrar" id="btnCerrar" title="Cerrar" aria-label="Cerrar">✕</button>
+          </div>
         </div>
       </header>
 

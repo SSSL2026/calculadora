@@ -1,20 +1,248 @@
 /* =========================================================
    Calculadora CMD — hoja de estilos
+   Temas: consola (por defecto) · retro · moderno
    ========================================================= */
 
+/* ---------------------------------------------------------
+   1. Tema por defecto — Consola (estilo cmd.exe)
+   --------------------------------------------------------- */
+
 :root {
+  --fondo-escenario:
+    radial-gradient(ellipse at 20% 0%, rgba(24, 62, 110, 0.55), transparent 60%),
+    radial-gradient(ellipse at 85% 90%, rgba(16, 84, 66, 0.4), transparent 55%),
+    #070a0f;
+
   --fondo: #0c0c0c;
   --fondo-titulo: #1f1f1f;
+  --fondo-consola: #0c0c0c;
   --fondo-panel: #0f0f0f;
+
   --texto: #cccccc;
   --texto-claro: #f2f2f2;
+  --texto-titulo: #cfcfcf;
   --tenue: #828c99;
-  --verde: #00ff41;
+  --info: #a3aebb;
+  --destacado: #9cdcfe;
+  --color-funcion: #9cdcfe;
+  --color-accion: #e6d690;
+
+  --acento: #00ff41;
+  --acento-hover: #62ff8b;
+  --texto-sobre-acento: #05270f;
   --resultado: #7ef29d;
   --error: #ff6b6b;
-  --borde: #2b2b2b;
+  --peligro: #ff6b6b;
+
+  --borde-ventana: #2f2f2f;
+  --borde-titulo: #000000;
+  --borde-panel: #1e1e1e;
+  --borde-tecla: #2e2e2e;
+  --borde-tecla-hover: #3d3d3d;
+  --borde-tecla-funcion: #35485a;
+
+  --fondo-tecla: #171717;
+  --fondo-tecla-hover: #242424;
+  --fondo-tecla-active: #2b2b2b;
+  --fondo-tecla-funcion: #141a20;
+  --fondo-tecla-funcion-hover: #1b242c;
+  --fondo-tecla-peligro: #2a1717;
+  --borde-tecla-peligro: #5c2b2b;
+  --texto-tecla: #d0d0d0;
+
+  --fondo-ventana-hover: #2d2d2d;
+  --fondo-ventana-active: #3a3a3a;
+  --color-cerrar-hover: #c42b1c;
+
+  --fondo-kbd: #1c1c1c;
+  --borde-kbd: #313131;
+  --texto-kbd: #b5b5b5;
+
+  --color-version: #6a727c;
+  --scrollbar: #3a3a3a;
+
+  --sombra-ventana:
+    0 30px 70px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
+  --resplandor-texto: none;
+
   --fuente: Consolas, "Courier New", ui-monospace, monospace;
+  --tamano-consola: 14.5px;
+  --radio: 8px;
+  --radio-tecla: 4px;
 }
+
+/* ---------------------------------------------------------
+   2. Tema Retro — terminal de fósforo con efecto CRT
+   --------------------------------------------------------- */
+
+:root[data-tema="retro"] {
+  --fondo-escenario:
+    radial-gradient(ellipse at center, #013d0f 0%, #001206 55%, #000401 100%);
+
+  --fondo: #001403;
+  --fondo-titulo: #062b0d;
+  --fondo-consola: #001403;
+  --fondo-panel: #001a06;
+
+  --texto: #b9f7c9;
+  --texto-claro: #e8ffef;
+  --texto-titulo: #8affb0;
+  --tenue: #58c97a;
+  --info: #7ee6a0;
+  --destacado: #f7ff7a;
+  --color-funcion: #7dffbb;
+  --color-accion: #ffe08a;
+
+  --acento: #3dff77;
+  --acento-hover: #a4ffbf;
+  --texto-sobre-acento: #001403;
+  --resultado: #f7ff7a;
+  --error: #ff9a4d;
+  --peligro: #ff9a4d;
+
+  --borde-ventana: #1d7a3a;
+  --borde-titulo: #0d4a1c;
+  --borde-panel: #0d4a1c;
+  --borde-tecla: #1d7a3a;
+  --borde-tecla-hover: #3dff77;
+  --borde-tecla-funcion: #1d7a3a;
+
+  --fondo-tecla: #00240a;
+  --fondo-tecla-hover: #0b3b18;
+  --fondo-tecla-active: #12521f;
+  --fondo-tecla-funcion: #00240a;
+  --fondo-tecla-funcion-hover: #0b3b18;
+  --fondo-tecla-peligro: #2b1204;
+  --borde-tecla-peligro: #ff9a4d;
+  --texto-tecla: #b9f7c9;
+
+  --fondo-ventana-hover: #0f4a1f;
+  --fondo-ventana-active: #166b2b;
+  --color-cerrar-hover: #a32b1c;
+
+  --fondo-kbd: #00240a;
+  --borde-kbd: #1d7a3a;
+  --texto-kbd: #8affb0;
+
+  --color-version: #4dbf72;
+  --scrollbar: #1d7a3a;
+
+  --sombra-ventana:
+    0 0 60px rgba(61, 255, 119, 0.18),
+    0 24px 60px rgba(0, 0, 0, 0.8);
+  --resplandor-texto: 0 0 7px rgba(61, 255, 119, 0.45);
+
+  --fuente: "Lucida Console", "Courier New", ui-monospace, monospace;
+  --tamano-consola: 15px;
+  --radio: 0px;
+  --radio-tecla: 0px;
+}
+
+/* Líneas de barrido, viñeta y parpadeo del tubo */
+:root[data-tema="retro"] .ventana::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0px,
+      rgba(0, 0, 0, 0) 2px,
+      rgba(0, 0, 0, 0.28) 3px,
+      rgba(0, 0, 0, 0.28) 4px
+    ),
+    radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 52%, rgba(0, 0, 0, 0.55) 100%);
+  animation: parpadeo-crt 6.5s infinite;
+}
+
+:root[data-tema="retro"] .consola,
+:root[data-tema="retro"] .pie,
+:root[data-tema="retro"] .barra-titulo {
+  text-shadow: var(--resplandor-texto);
+}
+
+:root[data-tema="retro"] .consola__entrada {
+  text-shadow: 0 0 9px rgba(61, 255, 119, 0.75);
+}
+
+@keyframes parpadeo-crt {
+  0%, 88%, 100% { opacity: 1; }
+  89% { opacity: 0.86; }
+  90% { opacity: 1; }
+  94% { opacity: 0.93; }
+  95% { opacity: 1; }
+}
+
+/* ---------------------------------------------------------
+   3. Tema Moderno — interfaz clara y limpia
+   --------------------------------------------------------- */
+
+:root[data-tema="moderno"] {
+  --fondo-escenario: linear-gradient(160deg, #eef2f8 0%, #e2e8f2 100%);
+
+  --fondo: #ffffff;
+  --fondo-titulo: #f7f8fa;
+  --fondo-consola: #ffffff;
+  --fondo-panel: #f7f8fa;
+
+  --texto: #4b5563;
+  --texto-claro: #111827;
+  --texto-titulo: #374151;
+  --tenue: #6b7280;
+  --info: #6b7280;
+  --destacado: #2563eb;
+  --color-funcion: #7c3aed;
+  --color-accion: #b45309;
+
+  --acento: #2563eb;
+  --acento-hover: #1d4ed8;
+  --texto-sobre-acento: #ffffff;
+  --resultado: #047857;
+  --error: #dc2626;
+  --peligro: #dc2626;
+
+  --borde-ventana: #dfe3e8;
+  --borde-titulo: #e5e7eb;
+  --borde-panel: #e5e7eb;
+  --borde-tecla: #e5e7eb;
+  --borde-tecla-hover: #cbd5e1;
+  --borde-tecla-funcion: #dbeafe;
+
+  --fondo-tecla: #f9fafb;
+  --fondo-tecla-hover: #f1f3f7;
+  --fondo-tecla-active: #e7ebf1;
+  --fondo-tecla-funcion: #eff6ff;
+  --fondo-tecla-funcion-hover: #e0edff;
+  --fondo-tecla-peligro: #fef2f2;
+  --borde-tecla-peligro: #fecaca;
+  --texto-tecla: #374151;
+
+  --fondo-ventana-hover: #e9edf2;
+  --fondo-ventana-active: #dde3ea;
+  --color-cerrar-hover: #dc2626;
+
+  --fondo-kbd: #f3f4f6;
+  --borde-kbd: #e5e7eb;
+  --texto-kbd: #6b7280;
+
+  --color-version: #9aa3af;
+  --scrollbar: #cbd5e1;
+
+  --sombra-ventana: 0 24px 55px rgba(15, 23, 42, 0.16);
+  --resplandor-texto: none;
+
+  --fuente: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --tamano-consola: 15px;
+  --radio: 14px;
+  --radio-tecla: 10px;
+}
+
+/* ---------------------------------------------------------
+   4. Estructura base
+   --------------------------------------------------------- */
 
 * { box-sizing: border-box; }
 
@@ -27,10 +255,7 @@ body {
   padding: 24px;
   font-family: var(--fuente);
   color: var(--texto);
-  background:
-    radial-gradient(ellipse at 20% 0%, rgba(24, 62, 110, 0.55), transparent 60%),
-    radial-gradient(ellipse at 85% 90%, rgba(16, 84, 66, 0.4), transparent 55%),
-    #070a0f;
+  background: var(--fondo-escenario);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,7 +269,9 @@ body {
   justify-content: center;
 }
 
-/* ---------------- Ventana ---------------- */
+/* ---------------------------------------------------------
+   5. Ventana
+   --------------------------------------------------------- */
 
 .ventana {
   position: relative;
@@ -53,12 +280,10 @@ body {
   display: flex;
   flex-direction: column;
   background: var(--fondo);
-  border: 1px solid #2f2f2f;
-  border-radius: 8px;
+  border: 1px solid var(--borde-ventana);
+  border-radius: var(--radio);
   overflow: hidden;
-  box-shadow:
-    0 30px 70px rgba(0, 0, 0, 0.7),
-    0 0 0 1px rgba(255, 255, 255, 0.04);
+  box-shadow: var(--sombra-ventana);
 }
 
 .ventana--maximizada {
@@ -77,16 +302,19 @@ body {
 .ventana--minimizada .teclado,
 .ventana--minimizada .pie { display: none; }
 
-/* ---------------- Barra de título ---------------- */
+/* ---------------------------------------------------------
+   6. Barra de título
+   --------------------------------------------------------- */
 
 .barra-titulo {
   flex: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
   height: 34px;
   background: var(--fondo-titulo);
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid var(--borde-titulo);
   user-select: none;
 }
 
@@ -97,11 +325,11 @@ body {
   min-width: 0;
   padding-left: 12px;
   font-size: 12.5px;
-  color: #cfcfcf;
+  color: var(--texto-titulo);
 }
 
 .barra-titulo__icono {
-  color: var(--verde);
+  color: var(--acento);
   font-weight: 700;
   letter-spacing: -1px;
 }
@@ -112,14 +340,21 @@ body {
   white-space: nowrap;
 }
 
+.barra-titulo__acciones {
+  display: flex;
+  align-items: center;
+  flex: none;
+  height: 100%;
+}
+
 .barra-titulo__controles { display: flex; height: 100%; }
 
 .boton-ventana {
-  width: 46px;
+  width: 44px;
   height: 100%;
   border: 0;
   background: transparent;
-  color: #cfcfcf;
+  color: var(--texto-titulo);
   font-family: inherit;
   font-size: 13px;
   line-height: 1;
@@ -127,12 +362,63 @@ body {
   transition: background 0.12s ease, color 0.12s ease;
 }
 
-.boton-ventana:hover { background: #2d2d2d; }
-.boton-ventana:active { background: #3a3a3a; }
-.boton-ventana--cerrar:hover { background: #c42b1c; color: #fff; }
-.boton-ventana:focus-visible { outline: 2px solid var(--verde); outline-offset: -3px; }
+.boton-ventana:hover { background: var(--fondo-ventana-hover); }
+.boton-ventana:active { background: var(--fondo-ventana-active); }
+.boton-ventana--cerrar:hover { background: var(--color-cerrar-hover); color: #fff; }
+.boton-ventana:focus-visible { outline: 2px solid var(--acento); outline-offset: -3px; }
 
-/* ---------------- Consola ---------------- */
+/* ---------------------------------------------------------
+   7. Selector de temas
+   --------------------------------------------------------- */
+
+.selector-tema {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-right: 10px;
+  padding-right: 10px;
+  border-right: 1px solid var(--borde-titulo);
+  height: 60%;
+}
+
+.tema-boton {
+  font-family: inherit;
+  font-size: 11px;
+  line-height: 1;
+  padding: 5px 9px;
+  background: var(--fondo-tecla);
+  color: var(--tenue);
+  border: 1px solid var(--borde-tecla);
+  border-radius: var(--radio-tecla);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+
+.tema-boton:hover {
+  background: var(--fondo-tecla-hover);
+  color: var(--texto-tecla);
+  border-color: var(--borde-tecla-hover);
+}
+
+.tema-boton[aria-pressed="true"] {
+  background: var(--acento);
+  border-color: var(--acento);
+  color: var(--texto-sobre-acento);
+  font-weight: 700;
+}
+
+.tema-boton[aria-pressed="true"]:hover {
+  background: var(--acento-hover);
+  border-color: var(--acento-hover);
+  color: var(--texto-sobre-acento);
+}
+
+.tema-boton:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+
+/* ---------------------------------------------------------
+   8. Consola
+   --------------------------------------------------------- */
 
 .consola {
   flex: 1 1 auto;
@@ -140,17 +426,19 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   padding: 14px 16px 12px;
-  font-size: 14.5px;
+  font-size: var(--tamano-consola);
   line-height: 1.5;
+  background: var(--fondo-consola);
+  color: var(--texto);
   cursor: text;
   scrollbar-width: thin;
-  scrollbar-color: #3a3a3a var(--fondo);
+  scrollbar-color: var(--scrollbar) var(--fondo-consola);
 }
 
 .consola::-webkit-scrollbar { width: 12px; }
-.consola::-webkit-scrollbar-track { background: var(--fondo); }
-.consola::-webkit-scrollbar-thumb { background: #333; border: 3px solid var(--fondo); border-radius: 8px; }
-.consola::-webkit-scrollbar-thumb:hover { background: #4a4a4a; }
+.consola::-webkit-scrollbar-track { background: var(--fondo-consola); }
+.consola::-webkit-scrollbar-thumb { background: var(--scrollbar); border: 3px solid var(--fondo-consola); border-radius: 8px; }
+.consola::-webkit-scrollbar-thumb:hover { filter: brightness(1.35); }
 
 .linea {
   min-height: 1.5em;
@@ -161,10 +449,10 @@ body {
 .linea--eco { color: var(--texto-claro); }
 .linea--resultado { color: var(--resultado); font-weight: 700; }
 .linea--error { color: var(--error); }
-.linea--info { color: #a3aebb; }
-.linea--destacado { color: #9cdcfe; }
+.linea--info { color: var(--info); }
+.linea--destacado { color: var(--destacado); }
 
-.prompt { color: var(--verde); }
+.prompt { color: var(--acento); }
 
 .consola__entrada {
   display: flex;
@@ -191,7 +479,7 @@ body {
   display: inline-block;
   width: 0.62em;
   height: 1.12em;
-  background: var(--verde);
+  background: var(--acento);
   vertical-align: text-bottom;
   animation: parpadeo 1.06s steps(1, end) infinite;
 }
@@ -219,7 +507,9 @@ body {
   50%, 100% { opacity: 0; }
 }
 
-/* ---------------- Teclado ---------------- */
+/* ---------------------------------------------------------
+   9. Teclado
+   --------------------------------------------------------- */
 
 .teclado {
   flex: none;
@@ -228,43 +518,61 @@ body {
   gap: 6px;
   padding: 10px;
   background: var(--fondo-panel);
-  border-top: 1px solid #232323;
+  border-top: 1px solid var(--borde-panel);
 }
 
 .tecla {
   font-family: inherit;
   font-size: 14.5px;
   padding: 9px 4px;
-  background: #171717;
-  color: #d0d0d0;
-  border: 1px solid #2e2e2e;
-  border-radius: 4px;
+  background: var(--fondo-tecla);
+  color: var(--texto-tecla);
+  border: 1px solid var(--borde-tecla);
+  border-radius: var(--radio-tecla);
   cursor: pointer;
   user-select: none;
-  transition: background 0.12s ease, border-color 0.12s ease, transform 0.05s ease;
+  transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease, transform 0.05s ease;
 }
 
-.tecla:hover { background: #242424; border-color: #3d3d3d; }
-.tecla:active { transform: translateY(1px); background: #2b2b2b; }
-.tecla:focus-visible { outline: 2px solid var(--verde); outline-offset: 1px; }
+.tecla:hover { background: var(--fondo-tecla-hover); border-color: var(--borde-tecla-hover); }
+.tecla:active { transform: translateY(1px); background: var(--fondo-tecla-active); }
+.tecla:focus-visible { outline: 2px solid var(--acento); outline-offset: 1px; }
 
-.tecla--operador { color: var(--verde); font-weight: 700; }
-.tecla--funcion { color: #9cdcfe; background: #141a20; }
-.tecla--funcion:hover { background: #1b242c; border-color: #35485a; }
-.tecla--accion { color: #e6d690; }
-.tecla--peligro { color: var(--error); font-weight: 700; }
-.tecla--peligro:hover { background: #2a1717; border-color: #5c2b2b; }
+.tecla--operador { color: var(--acento); font-weight: 700; }
+
+.tecla--funcion {
+  color: var(--color-funcion);
+  background: var(--fondo-tecla-funcion);
+  border-color: var(--borde-tecla-funcion);
+}
+.tecla--funcion:hover { background: var(--fondo-tecla-funcion-hover); }
+
+.tecla--accion { color: var(--color-accion); }
+
+.tecla--peligro {
+  color: var(--peligro);
+  font-weight: 700;
+  background: var(--fondo-tecla-peligro);
+  border-color: var(--borde-tecla-peligro);
+}
+.tecla--peligro:hover { background: var(--fondo-tecla-peligro); filter: brightness(1.25); }
 
 .tecla--igual {
-  background: var(--verde);
-  border-color: var(--verde);
-  color: #05270f;
+  background: var(--acento);
+  border-color: var(--acento);
+  color: var(--texto-sobre-acento);
   font-weight: 700;
   font-size: 16px;
 }
-.tecla--igual:hover { background: #62ff8b; border-color: #62ff8b; }
+.tecla--igual:hover {
+  background: var(--acento-hover);
+  border-color: var(--acento-hover);
+  color: var(--texto-sobre-acento);
+}
 
-/* ---------------- Pie ---------------- */
+/* ---------------------------------------------------------
+   10. Pie de atajos
+   --------------------------------------------------------- */
 
 .pie {
   flex: none;
@@ -274,30 +582,32 @@ body {
   gap: 6px 16px;
   padding: 7px 12px;
   background: var(--fondo-panel);
-  border-top: 1px solid #1e1e1e;
+  border-top: 1px solid var(--borde-panel);
   font-size: 11.5px;
   color: var(--tenue);
   user-select: none;
 }
 
-.pie__version { margin-left: auto; color: #6a727c; }
+.pie__version { margin-left: auto; color: var(--color-version); }
 
 kbd {
   display: inline-block;
   min-width: 1.6em;
   margin-right: 4px;
   padding: 1px 5px;
-  background: #1c1c1c;
-  border: 1px solid #313131;
+  background: var(--fondo-kbd);
+  border: 1px solid var(--borde-kbd);
   border-bottom-width: 2px;
   border-radius: 3px;
-  color: #b5b5b5;
+  color: var(--texto-kbd);
   font-family: inherit;
   font-size: 10.5px;
   text-align: center;
 }
 
-/* ---------------- Cierre ---------------- */
+/* ---------------------------------------------------------
+   11. Cierre de sesión
+   --------------------------------------------------------- */
 
 .cierre {
   position: absolute;
@@ -313,24 +623,30 @@ kbd {
 }
 
 .cierre__mensaje { margin: 0; color: var(--texto); font-size: 15px; }
-.cierre__mensaje span { color: var(--verde); }
+.cierre__mensaje span { color: var(--acento); font-weight: 700; }
 
 .cierre__reiniciar {
   font-family: inherit;
   font-size: 13.5px;
   padding: 9px 20px;
-  background: #171717;
+  background: var(--fondo-tecla);
   color: var(--texto-claro);
-  border: 1px solid #3a3a3a;
-  border-radius: 4px;
+  border: 1px solid var(--borde-tecla-hover);
+  border-radius: var(--radio-tecla);
   cursor: pointer;
 }
-.cierre__reiniciar:hover { background: #242424; border-color: var(--verde); }
+.cierre__reiniciar:hover {
+  background: var(--fondo-tecla-hover);
+  border-color: var(--acento);
+}
 
-/* ---------------- Responsive ---------------- */
+/* ---------------------------------------------------------
+   12. Responsive
+   --------------------------------------------------------- */
 
 @media (max-width: 600px) {
   body { padding: 0; }
+
   .ventana {
     width: 100%;
     height: 100vh;
@@ -338,14 +654,31 @@ kbd {
     border-radius: 0;
     border: none;
   }
+
   .consola { font-size: 14px; padding: 12px; }
+
   .tecla { font-size: 15px; padding: 12px 4px; }
+
+  .barra-titulo { gap: 6px; }
   .barra-titulo__nombre { font-size: 11.5px; }
+  .barra-titulo__texto { padding-left: 8px; gap: 6px; }
+  .boton-ventana { width: 36px; }
+
+  .selector-tema { margin-right: 6px; padding-right: 6px; gap: 3px; }
+  .tema-boton { font-size: 10px; padding: 4px 6px; }
+
   .pie { font-size: 10.5px; gap: 4px 12px; }
   .pie__version { display: none; }
 }
 
+/* ---------------------------------------------------------
+   13. Accesibilidad
+   --------------------------------------------------------- */
+
 @media (prefers-reduced-motion: reduce) {
-  .cursor { animation: none; }
-  * { transition: none !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

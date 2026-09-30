@@ -3,6 +3,23 @@
 Calculadora web con estética de símbolo del sistema de Windows (`cmd.exe`).
 HTML, CSS y JavaScript puro: sin dependencias, sin build, sin `npm install`.
 
+## Selector de temas
+
+En la barra de título, a la izquierda de los botones de ventana, hay tres
+botones para cambiar la apariencia de la aplicación. La elección se guarda en
+`localStorage` y se aplica antes de pintar la página, así que se mantiene entre
+sesiones y no hay parpadeos al abrirla.
+
+| Tema      | Estilo                                                                 |
+|-----------|------------------------------------------------------------------------|
+| `consola` | **Por defecto.** Ventana de símbolo del sistema: fondo negro, texto gris, acentos verdes y esquinas redondeadas. |
+| `retro`   | Terminal de fósforo verde con líneas de barrido, viñeta, parpadeo de tubo, esquinas rectas y brillo en el texto. |
+| `moderno` | Interfaz clara y minimalista: fondo blanco, tipografía de sistema, acentos azules y bordes suaves. |
+
+El tema se aplica con el atributo `data-tema` sobre `<html>`; cada tema solo
+reescribe las variables CSS de `:root`, de modo que la estructura, el teclado y
+la lógica son comunes a los tres.
+
 ## Cómo abrirla
 
 Haz doble clic en `index.html`. Funciona directamente desde el navegador

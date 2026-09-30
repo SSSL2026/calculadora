@@ -605,6 +605,56 @@
   });
 
   /* ---------------------------------------------------------
+     Selector de temas
+     --------------------------------------------------------- */
+
+  const TEMAS = ['consola', 'retro', 'moderno'];
+  const CLAVE_TEMA = 'calculadora:tema';
+  const selectorTema = document.getElementById('selectorTema');
+
+  function aplicarTema(tema) {
+    const elegido = TEMAS.indexOf(tema) !== -1 ? tema : TEMAS[0];
+
+    document.documentElement.setAttribute('data-tema', elegido);
+
+    Array.prototype.forEach.call(document.querySelectorAll('[data-tema-boton]'), function (boton) {
+      const activo = boton.getAttribute('data-tema-boton') === elegido;
+      boton.setAttribute('aria-pressed', String(activo));
+    });
+
+    try {
+      localStorage.setItem(CLAVE_TEMA, elegido);
+    } catch (error) {
+      /* almacenamiento no disponible: el tema solo dura esta sesión */
+    }
+
+    return elegido;
+  }
+
+  function temaGuardado() {
+    try {
+      return localStorage.getItem(CLAVE_TEMA);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  selectorTema.addEventListener('click', function (evento) {
+    evento.stopPropagation();
+
+    const boton = evento.target.closest('[data-tema-boton]');
+    if (!boton) return;
+
+    aplicarTema(boton.getAttribute('data-tema-boton'));
+
+    /* Si el cambio viene del ratón, devolvemos el foco a la línea de
+       entrada para poder seguir escribiendo sin volver a pulsar. */
+    if (evento.detail > 0) enfocar();
+  });
+
+  aplicarTema(temaGuardado());
+
+  /* ---------------------------------------------------------
      Controles de la ventana
      --------------------------------------------------------- */
 
