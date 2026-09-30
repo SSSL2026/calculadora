@@ -58,7 +58,7 @@
   --borde-kbd: #313131;
   --texto-kbd: #b5b5b5;
 
-  --color-version: #6a727c;
+  --color-version: #7d8794;
   --scrollbar: #3a3a3a;
 
   --sombra-ventana:
@@ -228,7 +228,7 @@
   --borde-kbd: #e5e7eb;
   --texto-kbd: #6b7280;
 
-  --color-version: #9aa3af;
+  --color-version: #6b7280;
   --scrollbar: #cbd5e1;
 
   --sombra-ventana: 0 24px 55px rgba(15, 23, 42, 0.16);
@@ -378,7 +378,6 @@ body {
   margin-right: 10px;
   padding-right: 10px;
   border-right: 1px solid var(--borde-titulo);
-  height: 60%;
 }
 
 .tema-boton {
